@@ -16,6 +16,13 @@ module LogSnag
       attributes = {project: project, channel: channel, event: event}
       Log.new post_request("#{BASE_URL}/log", body: attributes.merge(params)).body
     end
+    
+    
+    def insight(project:, title:, value:, **params)
+      attributes = {project: project, title: title, value: value}
+      Log.new post_request("#{BASE_URL}/insight", body: attributes.merge(params)).body
+    end
+    
 
     def connection
       @connection ||= Faraday.new(BASE_URL) do |conn|

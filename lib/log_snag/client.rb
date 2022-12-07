@@ -14,7 +14,7 @@ module LogSnag
 
     def log(project:, channel:, event:, **params)
       attributes = {project: project, channel: channel, event: event}
-      Log.new post_request("log", body: attributes.merge(params)).body
+      Log.new post_request("#{BASE_URL}/log", body: attributes.merge(params)).body
     end
 
     def connection
